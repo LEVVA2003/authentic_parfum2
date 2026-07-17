@@ -259,5 +259,8 @@ app.delete("/api/orders/:id", async (req,res)=>{
         });
     }
 });
+app.get("/", (req,res)=>{
+  res.send("Backend is running successfully");
+});
 module.exports = app;
 console.log("APP FINISHED");
