@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Résultats de la recherche</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f6f6f6;
+  color:#222;
+}
+body {
+  padding-top: 80px; /* حسب ارتفاع الهيدر */
+}
+
+header{
+  background:white;
+  text-align:center;
+  padding:15px 0 25px;
+}
+ header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: white; /* مهم حتى لا يصبح شفاف */
+}
+
+.logo{
+  width:200px;
+}
+
+nav a{
+  margin:0 15px;
+  text-decoration:none;
+  color:#222;
+}
+
+.search-page{
+  width:80%;
+  margin:60px auto;
+}
+
+h1{
+  text-align:center;
+  font-size:36px;
+  margin-bottom:35px;
+}
+
+.search-box{
+  width:70%;
+  margin:0 auto 45px;
+  display:flex;
+  align-items:center;
+  border:2px solid #222;
+  border-radius:35px;
+  background:white;
+  padding:5px 20px;
+}
+
+.search-box input{
+  flex:1;
+  border:none;
+  outline:none;
+  font-size:17px;
+  padding:15px;
+}
+
+.search-box button{
+  border:none;
+  background:white;
+  font-size:25px;
+  cursor:pointer;
+}
+
+.search-actions{
+  width:80%;
+  margin:0 auto 30px;
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:20px;
+}
+
+.search-actions select{
+  padding:12px;
+  font-size:16px;
+}
+
+.products{
+  width:80%;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:28px;
+}
+
+.product-card{
+  background:white;
+  border:1px solid #ddd;
+  border-radius:18px;
+  overflow:hidden;
+  cursor:pointer;
+  min-height:420px;
+}
+
+.product-card img{
+  width:100%;
+  height:270px;
+  object-fit:cover;
+  display:block;
+  background:#f5f5f5;
+}
+
+.product-card h3{
+  padding:18px 18px 5px;
+  font-size:15px;
+  line-height:20px;
+  min-height:60px;
+  text-transform:uppercase;
+  font-weight:700;
+}
+
+.product-card p{
+  padding:0 18px 20px;
+  font-size:18px;
+  margin:0;
+}
+
+@media(max-width:900px){
+  .products{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .search-page{
+    width:92%;
+  }
+
+  .search-box{
+    width:100%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <img src="banner and logo/Gemini_Generated_Image_9c35ot9c35ot9c35.gif" class="logo">
+
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="catalogue.html">Catalogue</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="search-page">
+
+<h1>Résultats de la recherche</h1>
+
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="Recherche" onkeydown="enterSearch(event)">
+  <button onclick="newSearch()">🔍</button>
+</div>
+
+<div class="search-actions">
+  <span>Trier par :</span>
+
+  <select id="sortSearch" onchange="displaySearchResults()">
+    <option value="pertinence">Pertinence</option>
+    <option value="low">Prix: faible à élevé</option>
+    <option value="high">Prix: élevé à faible</option>
+  </select>
+
+  <span id="resultCount">0 résultat</span>
+</div>
+
+<div class="products" id="products"></div>
+
+</section>
+
+<script>
+let products = [];
+
+fetch("http://localhost:5000/api/products")
+    .then(res => res.json())
+    .then(data => {
+        products = data;
+displaySearchResults();
+    })
+    .catch(error => {
+        console.log(error);
+    });
+
+function getQuery(){
+  let params = new URLSearchParams(window.location.search);
+  return params.get("q") || "";
+}
+
+function displaySearchResults(){
+
+    let query = getQuery().toLowerCase();
+
+    let sort = document.getElementById("sortSearch").value;
+
+    let container = document.getElementById("products");
+
+
+    let results = products.filter(product =>
+        product.name.toLowerCase().includes(query)
+    );
+
+  if(sort === "low"){
+    results.sort((a,b) => a.price - b.price);
+  }
+
+  if(sort === "high"){
+    results.sort((a,b) => b.price - a.price);
+  }
+
+  container.innerHTML = "";
+
+  results.forEach(product => {
+    container.innerHTML += `
+      <div class="product-card" onclick="window.location.href='${product.link}'">
+        <img src="${product.image_url}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <p>${product.price} dh</p>
+      </div>
+    `;
+  });
+
+  document.getElementById("resultCount").innerText =
+    results.length + " résultats";
+}
+
+function newSearch(){
+  let text = document.getElementById("searchInput").value.trim();
+
+  if(text.length >= 2){
+    window.location.href = "recherche.html?q=" + encodeURIComponent(text);
+  }
+}
+
+function enterSearch(event){
+  if(event.key === "Enter"){
+    newSearch();
+  }
+}
+
+displaySearchResults();
+</script>
+
+</body>
+</html>
