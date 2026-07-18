@@ -255,6 +255,100 @@ select{
   .sort-area{
     margin-left:0;
   }
+  /* =========================
+   MOBILE VERSION
+========================= */
+
+@media screen and (max-width: 768px) {
+
+    body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* Logo + menu */
+    header {
+        padding: 15px;
+        text-align: center;
+    }
+
+    nav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+
+    /* Catalogue products */
+    .products,
+    .product-grid,
+    #products {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 10px;
+    }
+
+
+    .product-card {
+        width: 100%;
+        padding: 10px;
+    }
+
+
+    .product-card img {
+        width: 100%;
+        height: auto;
+    }
+
+
+    /* Product page */
+    .product-container,
+    .product-details {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .product-container img,
+    .product-details img {
+        width: 90%;
+    }
+
+
+    /* Cart sidebar */
+    .cart-sidebar {
+        width: 100%;
+        right: 0;
+    }
+
+
+    /* Form order */
+    .order-form {
+        width: 90%;
+        margin: auto;
+    }
+
+
+    input,
+    textarea,
+    select,
+    button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+
+    /* Admin table */
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+}
 }
 </style>
 </head>
