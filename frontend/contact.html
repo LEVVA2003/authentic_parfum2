@@ -123,36 +123,39 @@ button:hover{
         width: 90%;
     }
 
+}
 
-    /* Cart sidebar */
-    .cart-sidebar {
-        width: 100%;
-        right: 0;
-    }
+@media (max-width:768px){
 
+.cart-sidebar {
+    width:85%;
+    max-width:350px;
+    right:0;
+}
 
-    /* Form order */
-    .order-form {
-        width: 90%;
-        margin: auto;
-    }
+/* Responsive adjustments */
+.product-container,
+.product-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.product-image img {
+  width: 90%;
+}
 
-    input,
-    textarea,
-    select,
-    button {
-        width: 100%;
-        box-sizing: border-box;
-    }
+.product-info {
+  width: 90%;
+  text-align: center;
+}
 
-
-    /* Admin table */
-    table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
+/* الأزرار */
+.add-to-cart,
+.buy-now {
+  width: 90%;
+  margin: 15px auto;
+}
 
 }
 
