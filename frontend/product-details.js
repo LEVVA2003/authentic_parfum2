@@ -3,8 +3,7 @@ const page = window.location.pathname.split("/").pop();
 const id = page.replace("produit", "").replace(".html", "");
 
 let currentProduct = null;
-
-fetch(`http://localhost:5000/api/products/${id}`)
+fetch(`https://authenticparfum2-production.up.railway.app/api/products/${id}`)
 .then(res => res.json())
 .then(product => {
 
