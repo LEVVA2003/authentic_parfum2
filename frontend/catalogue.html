@@ -289,6 +289,82 @@ select{
 
 }
 }
+/* MOBILE DESIGN ONLY */
+@media (max-width: 600px){
+
+header{
+    padding:20px 10px;
+}
+
+.logo{
+    width:120px;
+}
+
+nav{
+    margin-top:10px;
+}
+
+nav a{
+    font-size:13px;
+    margin:0 8px;
+}
+
+
+.catalogue{
+    width:92%;
+    margin:25px auto;
+}
+
+.catalogue h1{
+    font-size:32px;
+    margin-bottom:25px;
+}
+
+
+/* filter */
+.top-filter{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:15px;
+}
+
+
+/* products */
+.products{
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+
+.product-card{
+    min-height:auto;
+}
+
+
+.product-card img{
+    height:170px;
+}
+
+
+.product-card h3{
+    font-size:13px;
+    padding:10px;
+}
+
+
+.product-card p{
+    font-size:14px;
+    padding:0 10px 15px;
+}
+
+
+/* panier */
+.cart-sidebar{
+    width:90%;
+    max-width:360px;
+}
+
+}
 </style>
 </head>
 
