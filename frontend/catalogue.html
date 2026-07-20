@@ -238,174 +238,107 @@ select{
   object-fit:cover;
   display:block;
 }
-/* =========================
-   MOBILE HEADER ONLY
-========================= */
+/* =====================
+   MOBILE HEADER
+===================== */
 
-.mobile-header{
-    display:none;
+.phone-header{
+display:none;
 }
 
 
 @media(max-width:600px){
 
-    header{
-        padding:20px 15px;
-    }
 
-    /* إخفاء nav القديم في الهاتف */
-    header nav{
-        display:none;
-    }
-
-
-    .mobile-header{
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        width:100%;
-    }
-
-
-    .logo{
-        width:140px;
-    }
-
-
-    .menu-btn{
-        background:none;
-        border:none;
-        font-size:28px;
-        cursor:pointer;
-    }
-
-
-    .mobile-icons{
-        display:flex;
-        gap:15px;
-        font-size:24px;
-    }
-
-
-    #mobileNav{
-        display:none;
-        flex-direction:column;
-        margin-top:30px;
-        text-align:left;
-    }
-
-
-    #mobileNav.active{
-        display:flex;
-    }
-
-
-    #mobileNav a{
-        padding:18px 10px;
-        font-size:22px;
-        color:#222;
-        text-decoration:none;
-        border-bottom:1px solid #eee;
-    }
-
-
-    /* catalogue الهاتف */
-    .catalogue{
-        width:92%;
-        margin:25px auto;
-    }
-
-
-    .products{
-        grid-template-columns:repeat(2,1fr);
-        gap:12px;
-    }
-
-
-    .product-card img,
-    .image-box{
-        height:170px;
-    }
-
-
-    .product-card h3{
-        font-size:13px;
-    }
-
-
-    .product-card p{
-        font-size:14px;
-    }
-
-}
-/* =========================
-   PRODUCTS MOBILE ONLY
-========================= */
-
-@media(max-width:600px){
-
-.products{
-    grid-template-columns:repeat(2,1fr);
-    gap:14px;
+.desktop-header{
+display:none;
 }
 
 
-.product-card{
-    border-radius:20px;
-    min-height:330px;
+.phone-header{
+display:block;
+background:white;
+border-bottom:1px solid #eee;
+position:sticky;
+top:0;
+z-index:1000;
 }
 
 
-.image-box{
-    height:190px;
+.phone-bar{
+
+height:150px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+position:relative;
+
 }
 
 
-.image-box img{
-    width:100%;
-    height:190px;
-    object-fit:cover;
+.phone-logo{
+
+width:130px;
+
 }
 
 
-.product-card h3{
-    font-size:13px;
-    line-height:18px;
-    padding:10px 10px 0;
-    margin:0;
-    min-height:45px;
+.phone-menu{
+
+position:absolute;
+
+left:25px;
+
+top:55px;
+
+background:none;
+
+border:none;
+
+font-size:32px;
+
+cursor:pointer;
+
 }
 
 
-.product-card p{
-    font-size:15px;
-    padding:5px 10px 15px;
-    margin:0;
+
+.phone-nav{
+
+display:none;
+
+flex-direction:column;
+
+background:white;
+
 }
 
 
-.catalogue h1{
-    font-size:38px;
-    margin-top:35px;
+.phone-nav.active{
+
+display:flex;
+
 }
 
 
-.top-filter{
-    display:flex;
-    flex-direction:row;
-    justify-content:space-between;
-    align-items:center;
+.phone-nav a{
+
+padding:22px 30px;
+
+font-size:26px;
+
+color:#222;
+
+text-decoration:none;
+
+border-top:1px solid #eee;
+
 }
 
-
-.sort-area{
-    width:auto;
-}
-
-
-select{
-    width:150px;
-}
 
 }
 
@@ -414,23 +347,38 @@ select{
 
 <body>
 
-<header>
-
-<div class="mobile-header">
-
-<button class="menu-btn" onclick="toggleMenu()">☰</button>
+<!-- HEADER DESKTOP -->
+<header class="desktop-header">
 
 <img src="banner and logo/Gemini_Generated_Image_9c35ot9c35ot9c35.gif" class="logo">
 
-<div class="mobile-icons">
-<span>⌕</span>
-<span>🛒</span>
-</div>
+<nav>
+<a href="index.html">Accueil</a>
+<a href="catalogue.html">Catalogue</a>
+<a href="contact.html">Contact</a>
+</nav>
+
+</header>
+
+
+<!-- HEADER MOBILE -->
+<header class="phone-header">
+
+<div class="phone-bar">
+
+<button class="phone-menu" onclick="toggleMenu()">
+☰
+</button>
+
+
+<img src="banner and logo/Gemini_Generated_Image_9c35ot9c35ot9c35.gif"
+class="phone-logo">
+
 
 </div>
 
 
-<nav id="mobileNav">
+<nav class="phone-nav" id="phoneNav">
 
 <a href="index.html">Accueil</a>
 <a href="catalogue.html">Catalogue</a>
@@ -642,7 +590,7 @@ function resetPrice(){
 function toggleMenu(){
 
 document
-.getElementById("mobileNav")
+.getElementById("phoneNav")
 .classList.toggle("active");
 
 }
