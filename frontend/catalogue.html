@@ -238,121 +238,19 @@ select{
   object-fit:cover;
   display:block;
 }
-/* =====================
-   MOBILE HEADER
-===================== */
+/* HEADER RESPONSIVE */
 
-.phone-header{
-display:none;
-}
-
-
-@media(max-width:600px){
-
-
-.desktop-header{
-display:none;
-}
-
-
-.phone-header{
-display:block;
-background:white;
-border-bottom:1px solid #eee;
-position:sticky;
-top:0;
-z-index:1000;
-}
-
-
-.phone-bar{
-
-height:150px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-position:relative;
-
-}
-
-
-.phone-logo{
-
-width:130px;
-
-}
-
-
-.phone-menu{
-
-position:absolute;
-
-left:25px;
-
-top:55px;
-
-background:none;
-
-border:none;
-
-font-size:32px;
-
-cursor:pointer;
-
-}
-
-
-
-.phone-nav{
-
-display:none;
-
-flex-direction:column;
-
-background:white;
-
-}
-
-
-.phone-nav.active{
-
-display:flex;
-
-}
-
-
-.phone-nav a{
-
-padding:22px 30px;
-
-font-size:26px;
-
-color:#222;
-
-text-decoration:none;
-
-border-top:1px solid #eee;
-
-}
-
-
-}
-/* DESKTOP HEADER */
 .phone-header{
     display:none;
 }
+
 
 .desktop-header{
     display:block;
 }
 
 
-/* MOBILE HEADER */
-@media(max-width:600px){
+@media (max-width:600px){
 
     .desktop-header{
         display:none;
@@ -360,42 +258,58 @@ border-top:1px solid #eee;
 
     .phone-header{
         display:block;
+        background:white;
+        border-bottom:1px solid #eee;
+        position:sticky;
+        top:0;
+        z-index:1000;
+    }
+
+
+    .phone-bar{
+        height:150px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        position:relative;
+    }
+
+
+    .phone-logo{
+        width:130px;
+    }
+
+
+    .phone-menu{
+        position:absolute;
+        left:25px;
+        top:55px;
+        background:none;
+        border:none;
+        font-size:32px;
+    }
+
+
+    .phone-nav{
+        display:none;
+        flex-direction:column;
+    }
+
+
+    .phone-nav.active{
+        display:flex;
+    }
+
+
+    .phone-nav a{
+        padding:20px;
+        font-size:22px;
+        text-decoration:none;
+        color:#222;
+        border-top:1px solid #eee;
     }
 
 }
-@media (max-width:600px){
-
-.desktop-header{
-    display:none !important;
-}
-
-.phone-header{
-    display:block !important;
-    background:red !important;
-    height:200px !important;
-}
-
-}
-@media (max-width:600px){
-
-.desktop-header{
-    display:none !important;
-}
-
-.phone-header{
-    display:block !important;
-}
-
-.phone-nav{
-    display:none;
-}
-
-.phone-nav.active{
-    display:flex;
-}
-
-}
-
 </style>
 </head>
 
